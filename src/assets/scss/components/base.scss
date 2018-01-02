@@ -2,10 +2,6 @@
   padding: 0.4rem;
 }
 
-.responsive-img {
-  max-height: 60%;
-}
-
 .text-secondary {
   color: $secondary-color;
 }
@@ -32,4 +28,17 @@
 
 .no-height {
   height: inherit !important;
+}
+
+.responsive-img {
+  width: auto;
+  height: 100%;
+}
+
+.height-100 {
+  height: calc(100vh - 250px);
+}
+
+.text-primary-dark {
+  color: $primary-dark;
 }

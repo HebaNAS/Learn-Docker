@@ -14492,6 +14492,12 @@ window.$ = _jquery2.default;
 
 (0, _jquery2.default)(document).foundation();
 
+// Breadcrumb navigation functionality
+(0, _jquery2.default)('.breadcrumb-counter-nav-item').click(function () {
+  (0, _jquery2.default)('.breadcrumb-counter-nav-item').removeClass('current');
+  (0, _jquery2.default)(this).addClass('current');
+});
+
 /***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {

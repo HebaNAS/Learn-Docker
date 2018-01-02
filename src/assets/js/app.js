@@ -10,3 +10,9 @@ import Foundation from 'foundation-sites';
 
 
 $(document).foundation();
+
+// Breadcrumb navigation functionality
+$('.breadcrumb-counter-nav-item').click(function () {
+  $('.breadcrumb-counter-nav-item').removeClass('current');
+  $(this).addClass('current');
+});
