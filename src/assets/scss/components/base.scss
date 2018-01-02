@@ -1,0 +1,35 @@
+.padding-04rem {
+  padding: 0.4rem;
+}
+
+.responsive-img {
+  max-height: 60%;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+.text-size-15rem {
+  font-size: 1.5rem;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.full-height {
+  height: calc(100vh - 120px);
+}
+
+.center-content {
+  margin: 0 auto;
+}
+
+.no-height {
+  height: inherit !important;
+}

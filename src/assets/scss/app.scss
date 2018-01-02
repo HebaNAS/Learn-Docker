@@ -51,3 +51,7 @@
 
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+@import "./components/base";
+@import "./components/nav";
+@import "./components/footer";

@@ -69,17 +69,21 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+  primary: #0B486B,
+  secondary: #F9F2E7,
+  success: #B8D342,
+  warning: #FECEA8,
+  alert: #E84A5F,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
+$primary-dark: #2A363B;
+$primary-light: #00A8C6;
+$primary-success: #68B3AF;
+$alert-light: #FF847C;
 $body-background: $white;
 $body-font-color: $black;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
