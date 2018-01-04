@@ -2,6 +2,10 @@
   padding: 0.4rem;
 }
 
+.margin-top-1 {
+  margin-top: 1rem;
+}
+
 .text-secondary {
   color: $secondary-color;
 }
@@ -41,4 +45,11 @@
 
 .text-primary-dark {
   color: $primary-dark;
+}
+
+.absolute-position-credits {
+  position: absolute;
+  right: 0;
+  top: calc(100vh - 270px);
+  z-index: 2;
 }
