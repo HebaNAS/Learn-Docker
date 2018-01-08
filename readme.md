@@ -111,6 +111,31 @@ The strength of Docker is that they have gone through the tedious task of stripp
 
 -------------------
 
+## How to create an environment for Docker to run
+
+We need to know some terminology before we explain how a container runs:
+
+_Dockerfile_: This is a text file that has the steps required to build an image. This is akin to the bash script that you would use to install software or setup environment variables.
+A simple Dockerfile will look like this:
+
+~~~
+FROM php:7.0-apache
+COPY config/php.ini /usr/local/etc/php/
+ENV APP_ENV dev
+~~~
+
+
+_Image_: These are a snapshot of the file system, however they are always based on a another image. The image does not contain the kernel, so it's not uncommon for images to be just a few megabytes.
+
+Images are cached which makes rebuilding containers very, very fast.
+
+
+_Container_: This is an instance of an image. If we run an image, we will get a container with the isonlated environment we specified running and ready for development.
+
+
+-------------------
+
+
 ## Code Lab 1
 
 First we'll get our hands dirty with some very simple commands to practice how to use docker locally in the commandline.
@@ -118,13 +143,13 @@ First we'll get our hands dirty with some very simple commands to practice how t
 Type the following in your terminal:
 
 ```
-docker run hello-world
+docker run hello-world:latest
 ```
 
 This command will do many things:
-1. It will ask Docker to run a container named "Hello World"
-2. Docker will look for a container with that name on your local machine, if it finds one, it will run it.
-3. If Docker couldn't find such a container locally, it will search for an image with same name on _Docker Hub_. Docker Hub simple put is a registry where you can find images for different stacks and environments you may want to use.
+1. It will ask Docker to run an image named "Hello World"
+2. Docker will look for an image with that name on your local machine, if it finds one, it will run it.
+3. If Docker couldn't find such an image locally, it will search for it on _Docker Hub_. Docker Hub simple put is a registry where you can find images for different stacks and environments you may want to use.
 4. After Docker pulls the image from _Docker Hub_, it will create a container from that image and run it.
 
 You should see the following output:
@@ -158,10 +183,12 @@ $ docker run hello-world
 **Breakdown for some of the most popular docker commands**
 
 
+
+
 -------------------
  
 ### References
 - [Docker For Windows Documentation](https://docs.docker.com/docker-for-windows/install/#start-docker-for-windows)
 - [Docker Toolbox for Windows](https://docs.docker.com/toolbox/toolbox_install_windows)
 - [Docker for MacOS Documentation](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac)
-
+- [Docker Concept Explanation](http://takacsmark.com/getting-started-with-docker-in-your-project-step-by-step-tutorial)
