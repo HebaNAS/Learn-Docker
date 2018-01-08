@@ -194,6 +194,15 @@ $ docker run hello-world
 
 For more Docker commands check the [Docker Documentation](https://docs.docker.com/engine/reference/commandline/docker/)
 
+-------------------
+
+
+## Code Lab 2: Running Private Ethereum Blockchain inside a Docker Container and push it to IBM Cloud.
+
+- Go to `CodeLab-2` folder in this repo.
+- Copy the source code for the three files in your local editor.
+- Run the following command in your terminal `docker build -t ethereum .` This will download all the assets we nedd (base images we are building on" and builds a new image for our ethereum container.
+- We will run the container locally first to check that it is working properly. Use the following command to run the container 
 
 -------------------
  
