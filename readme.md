@@ -13,20 +13,20 @@ An IBM Cloud account - A lite account, which is a free of charge account that do
 Docker must be installed on your system to be able to follow along with the hands-on sessions of the meetup. Please follow these steps for your operating system.
 
 
-**Windows 10**:
+&nbsp;&nbsp;&nbsp;&nbsp;**Windows 10**:
 
-- [Download the installer](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
-- Follow the wizard's instructions
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Download the installer](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Follow the wizard's instructions
 
-![Wizard](https://docs.docker.com/docker-for-windows/images/installer-finishes.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Wizard](https://docs.docker.com/docker-for-windows/images/installer-finishes.png)
 
-- Start Docker
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Start Docker
 
-![Start Docker](https://docs.docker.com/docker-for-windows/images/docker-app-search.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Start Docker](https://docs.docker.com/docker-for-windows/images/docker-app-search.png)
 
-If installation was successful and Docker is running you will see the docker icon in the taskbar.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If installation was successful and Docker is running you will see the docker icon in the taskbar.
 
-![Taskbar](https://docs.docker.com/docker-for-windows/images/whale-taskbar-circle.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Taskbar](https://docs.docker.com/docker-for-windows/images/whale-taskbar-circle.png)
  
  
 ### References
