@@ -115,7 +115,7 @@ The strength of Docker is that they have gone through the tedious task of stripp
 
 We need to know some terminology before we explain how a container runs:
 
-_Dockerfile_: This is a text file that has the steps required to build an image. This is akin to the bash script that you would use to install software or setup environment variables.
+* _Dockerfile_: This is a text file that has the steps required to build an image. This is akin to the bash script that you would use to install software or setup environment variables.
 A simple Dockerfile will look like this:
 
 ~~~
@@ -125,12 +125,10 @@ ENV APP_ENV dev
 ~~~
 
 
-_Image_: These are a snapshot of the file system, however they are always based on a another image. The image does not contain the kernel, so it's not uncommon for images to be just a few megabytes.
-
-Images are cached which makes rebuilding containers very, very fast.
+* _Image_: These are a snapshot of the file system, however they are always based on a another image. The image does not contain the kernel, so it's not uncommon for images to be just a few megabytes. Images are cached which makes rebuilding containers very, very fast.
 
 
-_Container_: This is an instance of an image. If we run an image, we will get a container with the isonlated environment we specified running and ready for development.
+* _Container_: This is an instance of an image. If we run an image, we will get a container with the isonlated environment we specified running and ready for development.
 
 
 -------------------
@@ -182,7 +180,16 @@ $ docker run hello-world
 
 **Breakdown for some of the most popular docker commands**
 
-
+- `docker ps`: Lists all the running containers on your local machine.
+- `docker rm [container-name/s]`: Remove one or more containers from your local machine.
+- `docker run [container-name[:version-number]]`: Run a new container from an image.
+- `docker run -p [container-port-number:host-port-number] [container-name]:[container-tag/version-number]`: Runs a docker container with specifying/publishing the container’s port(s) to the host.
+- `docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]`: Another way of running a docker container while specifying different options.
+- `docker images`: Lists all images on your local machine.
+- `docker rmi [image-name/s]`: Remove one or more on your local machine.
+- `docker build [image-name:tag] .`: Build an image from a _Dockerfile_, we add a tag for each image after the colon to identify different commits on the same image. **_Please Note_** the trailing dot at the end of the command as it has to be there. It basically tells docker where to find the _Dockerfile_ with the desired image specs.
+- `docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]`: Commit changes made in a container to an image to use later with the same additions to the environment made in that container instance.
+- `docker container exec -it [container name] /bin/bash`: Attach a shell to the containers. This gives us the ability to look at what's happening inside the container just like we use the terminal on our local machines. This also gives us the ability to add and install packages to our container that weren't specified in the image. We can save the additions we made in our container by use `docker commit` as shown above.
 
 
 -------------------
@@ -192,3 +199,4 @@ $ docker run hello-world
 - [Docker Toolbox for Windows](https://docs.docker.com/toolbox/toolbox_install_windows)
 - [Docker for MacOS Documentation](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac)
 - [Docker Concept Explanation](http://takacsmark.com/getting-started-with-docker-in-your-project-step-by-step-tutorial)
+- [Docker Terminology](http://elliot.land/post/docker-explained-simply)
