@@ -201,13 +201,20 @@ For more Docker commands check the [Docker Documentation](https://docs.docker.co
 
 - Go to `CodeLab-2` folder in this repo.
 - Copy the source code for the three files in your local editor.
-- Run the following command in your terminal `docker build -t ethereum .` This will download all the assets we nedd (base images we are building on" and builds a new image for our ethereum container.
-- We will run the container locally first to check that it is working properly. Use the following command to run the container
+- Run the following command in your terminal `docker build -t ethereum .` This will download all the assets we nedd (base images we are building on" and builds a new image for our ethereum container. 
+![Local1](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Local1.gif?raw=true)
+
+- We will run the container locally first to check that it is working properly. Use the following command to run the container `docker run ethereum`
+![Local2](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Local2.gif?raw=true)
 
 **Pushing our image to IBM Cloud**
 - Go to [IBM Cloud Clusters](https://console.bluemix.net/containers-kubernetes/home/clusters)
+![Step 1](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step1.gif?raw=true)
 
+- Create a new Cluster.
+![Step 2](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step2.gif?raw=true)
 
+- 
 
 -------------------
  
