@@ -4,161 +4,124 @@ import whatInput from 'what-input';
 window.$ = $;
 
 // Import and initialize foundation
-import Foundation from 'foundation-sites';
+import { Foundation } from 'foundation-sites';
 // If you want to pick and choose which modules to include, comment out the above and uncomment
 // the line below
 //import './lib/foundation-explicit-pieces';
 $(document).foundation();
 
 // Page transitions
-import {TweenMax, Power2, TimelineLite} from 'gsap';
+import { TweenMax, TimelineMax, Power2, Expo, Circ, Power4 } from 'gsap';
+import TweenDeck from './lib/tweendeck';
 
-var btns = document.querySelectorAll('.js-btn');
-var els = document.querySelectorAll('.js-page');
-var duration = 0.8;
-var isAnimating = false;
-var switchPageEvent = new Event('switch');
+$.TweenDeck = TweenDeck;
 
-addEventListenerList(btns, 'click', function(e) {
-  if(!isAnimating) {
-    switchPages(e.currentTarget.dataset.out, e.currentTarget.dataset.in);
-  }
-});
+// create a timeline
+var tl = new TimelineMax();
 
-addEventListenerList(els, 'switch', function(e) {
-  if(!isAnimating) {
-    console.log(e.currentTarget);
-    switchPages(e.currentTarget.dataset.out, e.currentTarget.dataset.in);
-  }
-});
+// ---------------------------------------
+// Add animation for each step
+// ---------------------------------------
 
+var i;
 
-function switchPages(outFn, inFn) {
-  isAnimating = true;
-
-  if (outFn == 'moveToRight') {
-    window[outFn] = moveToRight;
-  } else if (outFn == 'moveFromRight') {
-    window[outFn] = moveFromRight;
-  }
-  
-  if (inFn == 'moveToRight') {
-    window[inFn] = moveToRight;
-  } else if (inFn == 'moveFromRight') {
-    window[inFn] = moveFromRight;
-  }
-
-  window[outFn](document.querySelector('.is-current'));
-  window[inFn](document.querySelector('.js-page:not(.is-current)'));
-
-}
-
-function moveToRight(el) {
-  var no = el.dataset.viewport;
-  var page1flag = false;
-
-  if (no == 1) {
-    page1flag = true;
-  }
-
-  addClass(el, ['is-onTop', 'is-current']);
-  TweenMax.fromTo(el, duration, {
-    xPercent: 0
-  }, {
-    xPercent: -100,
-    clearProps: 'xPercent',
-    onComplete: function () {
-      removeClass(el, ['is-onTop', 'is-current']);
-      $('.breadcrumb-counter-nav-item').removeClass('current');
-      addClass($('.breadcrumb-counter-nav-item')[no], 'current');
-      isAnimating = false;
-    }
-  });
-
-
-  if (page1flag) {
-    TweenMax.to(el, 1, {
+// INTRO
+var intro = new TimelineMax();
+var startButtons = document.getElementsByClassName('start-btn');
+for (var i = 0, len = startButtons.length; i < len; i++) {
+  startButtons[i].addEventListener('click', function() {
+    intro.add(TweenMax.to($('#page-0'), 0, {
+      immediateRender:false,
+      css: { display: 'block' }
+    }));
+    intro.add(TweenMax.to($('#page-0'), 0.5, {
+      xPercent: -100,
+      onComplete: function() {
+        $('#page-0').removeClass('is-current is-onTop');
+        $('#page-1').addClass('is-current is-onTop');
+        $('.breadcrumb-counter-nav-item').removeClass('current');
+        $('#goto-1').addClass('current');
+      }
+    }));
+    intro.add(TweenMax.fromTo($('#page-1'), 1, {
+      xPercent: 100
+    }, {
+      xPercent: 0,
+      ease: Circ.easeOut
+    }));
+    intro.add(TweenMax.to($('#page-1'), 1, {
       scale: 10,
       opacity: 0,
-      ease: Back.Power2,
-      delay: 4
-    }, {
+      delay: 1.5,
       onComplete: function() {
-        console.log('Switch');
-        el.dispatchEvent('switch');
+        $('#page-1').removeClass('is-current is-onTop');
+        $('#page-2').addClass('is-current is-onTop');
+        $('.breadcrumb-counter-nav-item').removeClass('current');
+        $('#goto-2').addClass('current');
       }
-    });
-  }
+    }));
+    intro.add(TweenMax.fromTo($('#page-2'), 1, {
+      xPercent: 100
+    }, {
+      xPercent: 0,
+      ease: Circ.easeOut,
+      onComplete: function() {
+        intro.add(TweenMax.to($('#slide3hardware-text'), 2, {
+          immediateRender: false,
+          opacity: 0
+        }, {
+          opacity: 100,
+          ease: Circ.easeOut
+        }));
+      }
+    }));
+  }, false);
 }
+tl.add(intro);
 
-function moveFromRight(el) {
-  var no = el.dataset.viewport;
-  var page1flag = false;
-
-  if (no == 1) {
-    page1flag = true;
-  }
-  
-  addClass(el, ['is-onTop', 'is-current']);
-  TweenMax.fromTo(el, duration, {
-    xPercent: 100
+// Slide Three -> Four
+var slideThreeHardware = new TimelineMax();
+$('#page-2').on('click', function() {
+  slideThreeHardware.add(TweenMax.to($('#slide3hardware'), 1, {
+    yPercent: 90,
+    ease: Circ.easeOut
+  }));
+  slideThreeHardware.add(TweenMax.fromTo($('#slide3hardware-text'), 1, {
+    immediateRender: false,
+    opacity: 100
   }, {
-    xPercent: 0,
-    clearProps: 'xPercent',
-    onComplete: function () {
-      removeClass(el, 'is-onTop');
-      $('.breadcrumb-counter-nav-item').removeClass('current');
-      addClass($('.breadcrumb-counter-nav-item')[no], 'current');
-      isAnimating = false;
+    opacity: 0,
+    ease: Circ.easeOut
+  }));
+});
+tl.add(slideThreeHardware);
+
+// send the timeline into TweenDeck - DONE!
+var deck = $.TweenDeck(tl);
+
+// $('#btn-prev').on('click',function() {
+//   deck.prev();
+// });
+$('#next').on('click',function() {
+  deck.next();
+});
+
+// Jump to page
+var gotoBtns = document.querySelectorAll('.goto-btn');
+for (var i = 0, len = gotoBtns.length; i < len; i++) {
+  gotoBtns[i].addEventListener('click', function() {
+    if ($(this).attr('id') == 'goto-1') {
+      $('.pt-page').removeClass('is-current is-onTop');
+      $('#page-1').addClass('is-current is-onTop');
+    } else if ($(this).attr('id') == 'goto-2') {
+      $('.pt-page').removeClass('is-current is-onTop');
+      $('#page-2').addClass('is-current is-onTop');
     }
   });
-
-  if (page1flag) {
-    TweenMax.to(el, 1, {
-      scale: 10,
-      opacity: 0,
-      ease: Back.Power2,
-      delay: 4
-    }, {
-      onComplete: function() {
-        console.log('Switch');
-        el.dispatchEvent('switch');
-      }
-    });
-  }
-}
-
-// utils
-function addClass(el, className) {
-  [].concat(className).forEach(function (n) {
-    el.classList.add(n);
-  });
-}
-
-function removeClass(el, className) {
-  [].concat(className).forEach(function (n) {
-    el.classList.remove(n);
-  });
-}
-
-function addEventListenerList(list, event, fn) {
-  for (var i = 0, len = list.length; i < len; i++) {
-    list[i].addEventListener(event, fn, false);
-  }
-}
-
-// Page 1 transitions
-function fadeOutPage() {
-  if ($('.is-current')[0].dataset.viewport == 1) {
-    console.log($('.is-current')[0].dataset.viewport);
-    TweenMax.to($('.pt-page-1 .fade-out')[0], 1, {
-      x:-100 , opacity:0 , ease:Power1.easeInOut ,repeat:-1 
-    });
-  }
 }
 
 // Breadcrumb navigation functionality
-$('.breadcrumb-counter-nav-item').click(function () {
+$('.breadcrumb-counter-nav-item').click(function (e) {
   $('.breadcrumb-counter-nav-item').removeClass('current');
   $(this).addClass('current');
 });

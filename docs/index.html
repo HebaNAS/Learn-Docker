@@ -8,7 +8,6 @@
     <title>Learn Docker</title>
     <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Rochester" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/app.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   </head>
   <body>
     
@@ -29,10 +28,11 @@
         </a>
       </div>
     </header>
-    <div class="grid-container full-height transition-container" id="main" data-viewport="0">
-      <div class="grid-x align-middle no-height pt-page js-page pt-page-0 is-current" data-viewport="0">
+    <div class="grid-container full-height transition-container" id="main">
+      <div class="grid-x no-height pt-page is-current is-onTop" id="page-0">
         <div class="grid-x grid-margin-y center-content">
           <div class="cell">
+            <h3 class="text-center">Content still in Progress...</h3>
             <div class="grid-x align-center">
               <img src="assets/img/docker.png">
             </div>
@@ -40,32 +40,39 @@
         
           <div class="cell center-content">
             <div class="grid-x align-center">
-              <a href="#" class="large button primary pt-btn js-btn" data-out="moveToRight" data-in="moveFromRight"><strong>Start</strong></a>
+              <a href="#page-1" class="large button primary start-btn"><strong>Start</strong></a>
             </div>
           </div>
         </div>
       </div>
-         <div class="grid-x js-page pt-page pt-page-1" data-viewport="1"> 
-        <div class="cell height-100">
-          <div class="grid-x align-center height-100">
+         <div class="grid-x no-height pt-page" id="page-1"> 
+        <div class="cell">
+          <div class="grid-x grid-margin-y align-center height-100">
             <img class="responsive-img fade-out" src="assets/img/computer-01.svg">
           </div>
         </div>
         <div class="absolute-position-credits">
-          <div class="grid-x align-self-bottom">
-            <small class="text-right">Graphic Designed by <a href="http://www.freepik.com">Freepik</a></small>
-          </div>
+          <small class="text-right">Graphic Designed by <a href="http://www.freepik.com">Freepik</a></small>
         </div>
       </div>
-      <div class="grid-y align-middle pt-page pt-page-2" data-viewport="2"> 
-        <div class="cell height-100">
-          <div class="grid-x align-center height-100">
-            Page two
+      <div class="grid-x no-height align-middle pt-page" id="page-2">
+        <h5 class="text-center">Click anywhere on the screen to move to next slide</h5>
+        <div class="holy-grail-grid">
+          <!-- <div class="holy-grail-left layer" id="slide3app1">
+            <img class="responsive-img" src="assets/img/app.svg">
           </div>
-        </div>
-        <div class="absolute-position-credits">
-          <div class="grid-x align-self-bottom">
-            <small class="text-right">Graphic Designed by <a href="http://www.freepik.com">Freepik</a></small>
+          <div class="holy-grail-middle layer" id="slide3app2">
+            <img class="responsive-img" src="assets/img/app.svg">
+          </div>
+          <div class="holy-grail-right layer" id="slide3app3">
+            <img class="responsive-img" src="assets/img/app.svg">
+          </div>
+          <div class="holy-grail-footer layer" id="slide3os">
+            <img class="responsive-img" src="assets/img/os.svg">
+          </div> -->
+          <div class="holy-grail-footer layer" id="slide3hardware">
+            <img class="responsive-img" src="assets/img/hardware.svg">
+            <p class="h3" id="slide3hardware-text">A kernel (operating system) connects the application software to the hardware of a computer</p>
           </div>
         </div>
       </div>
@@ -73,17 +80,20 @@
     
     <div class="absolute-position-breadcrumb">
       <ul class="breadcrumb-counter-nav">
-        <li class="breadcrumb-counter-nav-item current">
-          <a href="index.html" class="pt-btn js-btn" data-out="moveFromRight" data-in="moveToRight" data-target="0">Start Here</a>
+        <li class="breadcrumb-counter-nav-item current start-btn goto-btn" id="goto-0">
+          <a href="#page-0">Start Here</a>
         </li>
-        <li class="breadcrumb-counter-nav-item">
-          <a href="#" class="pt-btn js-btn" data-out="moveToRight" data-in="moveFromRight" data-target="1">Step One</a>
+        <li class="breadcrumb-counter-nav-item goto-btn" id="goto-1">
+          <a href="#page-1">Step One</a>
         </li>
-        <li class="breadcrumb-counter-nav-item">
-          <a href="#" class="pt-btn js-btn" data-out="moveToRight" data-in="moveFromRight" data-target="2">Step Two</a>
+        <li class="breadcrumb-counter-nav-item goto-btn" id="goto-2">
+          <a href="#page-2">Step Two</a>
         </li>
+        <li class="breadcrumb-counter-nav-item goto-btn" id="goto-3">
+            <a href="#page-3">Step Three</a>
+          </li>
       </ul> 
-    </div><footer class="bg-primary-dark height-60">
+    </div><footer class="bg-primary-dark z-index-1 height-60">
       <div class="grid-y grid-frame grid-padding-y no-height">
         <div class="cell v-align">
           <div class="align-center text-center">

@@ -11,6 +11,7 @@ body {
   width: 100vw;
   top: calc(100vh - 120px);
   left: 0;
+  z-index: 2;
 }
 
 .breadcrumb-counter-nav {

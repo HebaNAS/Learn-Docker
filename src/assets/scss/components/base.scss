@@ -40,7 +40,7 @@
 }
 
 .height-100 {
-  height: calc(100vh - 250px);
+  height: calc(100vh - 180px);
 }
 
 .text-primary-dark {
@@ -50,6 +50,6 @@
 .absolute-position-credits {
   position: absolute;
   right: 0;
-  top: calc(100vh - 270px);
+  top: calc(100vh - 200px);
   z-index: 2;
 }

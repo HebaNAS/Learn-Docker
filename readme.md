@@ -185,11 +185,14 @@ $ docker run hello-world
 - `docker run [container-name[:version-number]]`: Run a new container from an image.
 - `docker run -p [container-port-number:host-port-number] [container-name]:[container-tag/version-number]`: Runs a docker container with specifying/publishing the container’s port(s) to the host.
 - `docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]`: Another way of running a docker container while specifying different options.
+- `docker stop [container-name]`: Stop one or more running containers. Thsi step must be done before removing a container using `docker rm`.
 - `docker images`: Lists all images on your local machine.
 - `docker rmi [image-name/s]`: Remove one or more on your local machine.
-- `docker build [image-name:tag] .`: Build an image from a _Dockerfile_, we add a tag for each image after the colon to identify different commits on the same image. **_Please Note_** the trailing dot at the end of the command as it has to be there. It basically tells docker where to find the _Dockerfile_ with the desired image specs.
+- `docker build -t [image-name:tag] .`: Build an image from a _Dockerfile_, we add a tag for each image after the colon to identify different commits on the same image. **_Please Note_** the trailing dot at the end of the command as it has to be there. It basically tells docker where to find the _Dockerfile_ with the desired image specs.
 - `docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]`: Commit changes made in a container to an image to use later with the same additions to the environment made in that container instance.
 - `docker container exec -it [container name] /bin/bash`: Attach a shell to the containers. This gives us the ability to look at what's happening inside the container just like we use the terminal on our local machines. This also gives us the ability to add and install packages to our container that weren't specified in the image. We can save the additions we made in our container by use `docker commit` as shown above.
+
+For more Docker commands check the [Docker Documentation](https://docs.docker.com/engine/reference/commandline/docker/)
 
 
 -------------------
@@ -200,3 +203,4 @@ $ docker run hello-world
 - [Docker for MacOS Documentation](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac)
 - [Docker Concept Explanation](http://takacsmark.com/getting-started-with-docker-in-your-project-step-by-step-tutorial)
 - [Docker Terminology](http://elliot.land/post/docker-explained-simply)
+- [Docker Commands](https://docs.docker.com/engine/reference/commandline/docker/)
