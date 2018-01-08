@@ -8,7 +8,7 @@ An IBM Cloud account - A lite account, which is a free of charge account that do
 
 ## Setting up the environment
 
-**1. Installing Docker**
+**Installing Docker**
 
 Docker must be installed on your system to be able to follow along with the hands-on sessions of the meetup. Please follow these steps for your operating system.
 
@@ -75,6 +75,87 @@ Docker version 17.09.1-ce, build 19e2cf6
 
 -------------------
 
+## Explaining the concept
+
+**What problem does docker solve?**
+This is the fundamental question of everyone who wants to start out with Docker. Let’s answer the question in the clearest and simplest way possible, with everyday words, not Docker terminology.
+
+Docker solves the problem of having identical environments across various stages of development and having isolated environments for your individual applications.
+
+The problem itself is as old as software development. Environment setup and management is a tedious task in every project.
+
+It used to be common practice to run your production applications on dedicated machines, while development or test environments were clattered with a lot of different applications to save hardware cost. In these cases your development and test servers were configured much differently than your production server.
+
+Infrastructure teams used to create different environment scripts for different stages, like development, test, staging and production. These environments were not identical, just mostly similar.
+
+On top of all this, we used to do our local development and unit testing on Windows machines, while all other stages were run on Unix systems.
+
+Working like this was not impossible, but it was a costly, time consuming effort to manage these environments with a lot of inherent risk that caused a lot of quality issues in all stages.
+
+Docker provides a solution to this problem with containerization.
+
+**What is containerization?**
+Containerization means, that your application runs in an isolated container, that is an explicitly defined, reproducable and portable environment. The analogy is taken from freight transport where you ship your goods in containers.
+
+A container of an app is the app’s operating environment in our computing scenario. With Docker you ship the operating environment along with your application.
+
+Containerization is not a new phenomenon, Linux Containers have been around for a while already, added to the Linux kernel in 2008. You can google LXC to learn more about the topic.
+
+The key here is resource sharing. Docker started out creating specialized Linux containers. The idea is the same. You don’t need a separate, full blown physical or virtual machine to give isolated environments to your applications.
+
+You can put your applications into containers that share most resources amongst each other. Containers are only different in the necessary minimum that is required to behave like an isolated environment.
+
+The strength of Docker is that they have gone through the tedious task of stripping of all common stuff from containers and leave the bare minimum inside for separation. This way they created a flexibility and portability we’ve not seen before in environment management.
+
+-------------------
+
+## Code Lab 1
+
+First we'll get our hands dirty with some very simple commands to practice how to use docker locally in the commandline.
+
+Type the following in your terminal:
+
+```
+docker run hello-world
+```
+
+This command will do many things:
+1. It will ask Docker to run a container named "Hello World"
+2. Docker will look for a container with that name on your local machine, if it finds one, it will run it.
+3. If Docker couldn't find such a container locally, it will search for an image with same name on _Docker Hub_. Docker Hub simple put is a registry where you can find images for different stacks and environments you may want to use.
+4. After Docker pulls the image from _Docker Hub_, it will create a container from that image and run it.
+
+You should see the following output:
+
+~~~
+$ docker run hello-world
+ Unable to find image 'hello-world:latest' locally
+ Pulling repository hello-world
+ 91c95931e552: Download complete
+ a8219747be10: Download complete
+ Status: Downloaded newer image for hello-world:latest
+ Hello from Docker.
+ This message shows that your installation appears to be working correctly.
+
+ To generate this message, Docker took the following steps:
+  1. The Docker Engine CLI client contacted the Docker Engine daemon.
+  2. The Docker Engine daemon pulled the "hello-world" image from the Docker Hub.
+     (Assuming it was not already locally available.)
+  3. The Docker Engine daemon created a new container from that image which runs the
+     executable that produces the output you are currently reading.
+  4. The Docker Engine daemon streamed that output to the Docker Engine CLI client, which sent it
+     to your terminal.
+
+ To try something more ambitious, you can run an Ubuntu container with:
+  $ docker run -it ubuntu bash
+
+ For more examples and ideas, visit:
+  https://docs.docker.com/userguide/
+~~~
+
+** Breakdown for the 
+
+-------------------
  
 ### References
 - [Docker For Windows Documentation](https://docs.docker.com/docker-for-windows/install/#start-docker-for-windows)
