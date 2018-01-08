@@ -78,6 +78,7 @@ Docker version 17.09.1-ce, build 19e2cf6
 ## Explaining the concept
 
 **What problem does docker solve?**
+
 This is the fundamental question of everyone who wants to start out with Docker. Let’s answer the question in the clearest and simplest way possible, with everyday words, not Docker terminology.
 
 Docker solves the problem of having identical environments across various stages of development and having isolated environments for your individual applications.
@@ -95,6 +96,7 @@ Working like this was not impossible, but it was a costly, time consuming effort
 Docker provides a solution to this problem with containerization.
 
 **What is containerization?**
+
 Containerization means, that your application runs in an isolated container, that is an explicitly defined, reproducable and portable environment. The analogy is taken from freight transport where you ship your goods in containers.
 
 A container of an app is the app’s operating environment in our computing scenario. With Docker you ship the operating environment along with your application.
@@ -153,7 +155,8 @@ $ docker run hello-world
   https://docs.docker.com/userguide/
 ~~~
 
-** Breakdown for the 
+**Breakdown for some of the most popular docker commands**
+
 
 -------------------
  
