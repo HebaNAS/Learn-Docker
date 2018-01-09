@@ -230,7 +230,43 @@ Now we're sure that we have a docker container running with the specified enviro
 
 ![Step 2](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step2.gif?raw=true)
 
-- 
+- Follow the IBM Cluster Documentation on the _Access_ Tab of your Clusters Service.
+
+![Step 3](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step3.png?raw=true)
+
+- After you install both [IBM Cloud CLI](https://clis.ng.bluemix.net/) and [Kubernetes CLI](https://kubernetes.io/docs/user-guide/prereqs/) as shown in the Clusters Service Docs, log in to your IBM Cloud Account to gain access to your cluster. Following the previous steps should give an output that is similar to this
+
+![Step 4](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step4.png?raw=true)
+
+- Next, let's create a namespace on IBM Cloud. This is to save all our clusters in one place. Type the following command `bx cr namespace-add <my_namespace>`. Replace <my_namespace> with a name of your choice.
+
+![Step 5](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step5.gif?raw=true)
+
+- Now, to push our _ethereum_ image to IBM Cloud we need to take it first. Type following command `docker tag <source_image>:<tag> registry.<region>.bluemix.net/<my_namespace>/<new_image_repo>:<new_tag>`. This may look a handful, but it's really easy if we break it down. 
+>>Replace <source_image> with the image name on your local machine.
+>>Replace <tag> with the image's tag. (_Remember: if you forgot the image's name, you can always use `docker images` command to list all the images on your local machine and their relative tags._
+>>Replace <region> with the region you used before while logging in, in our case, it was US South. If you want to grab the exact name type `bx api` in the command line and it will show you the region you're currently connected to, choose the only the letter between `api.` and `.bluemix.net`.
+ >>Then replace <my_namespace> with the namespace you just created in the previous step.
+ >>Finally, replace <new_image_repo> with the name of the local image you are pushing to the cloud, the tag part is optional, if you already gave you're image a tag while naming it locally `ethereum:latest` for example, use that tag. Here's a demo of that comand in action:
+ 
+ ![Step 6](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step6.gif?raw=true)
+ 
+ - Final step is to push our just tagged image to IBM Cloud. Use the following command `docker push registry.<region>.bluemix.net/<my_namespace>/<image_repo>:<tag>`. Replace the values between the brackets as we did in the previous step.
+ 
+ ![Step 7](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step7.gif?raw=true)
+ 
+ This step will take time. If image was pushed successfully you'll see the following output:
+ 
+ ![Step 7 Done](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step7Done.png?raw=true)
+ 
+ **Note**
+ If you hit the following error
+ 
+ ![Step 7 Error](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step7Error.gif?raw=true)
+ 
+ It means you haven't logged in to IBM Cloud Registry, which is different than logging to your IBM Cloud account. So, to proceed type the following in your terminal `bx cr login`. Provide your credentials if prompted, if you're already logged in to your IBM Cloud account, your credentials will be grabbed automatically. The result should look like this:
+ 
+ ![Step 7 Resolved](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step7Resolve.png?raw=true)
 
 -------------------
  
