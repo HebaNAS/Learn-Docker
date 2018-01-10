@@ -1,9 +1,40 @@
 # Learn Docker the Hard Way
+A workshop delivered by IBM Cloud Developer Experience Team - Dubai
+
+
+## Speakers:
+
+- [Kunal Malhotra](https://developer.ibm.com/code/community/advocates/#!/advocate/kunal.malhotra1)
+
+- [Saif Rehman](https://developer.ibm.com/code/community/advocates/#!/advocate/saif.rehman1)
 
 
 ## Pre-requisite for this workshop
 
 An IBM Cloud account - A lite account, which is a free of charge account that doesn’t expire, can be created through going to [IBM Cloud](https://ibm.biz/BdjNyT).
+
+
+## Contents
+1.[Setting up the environment](#setting-up-the-environment)
+
+ &nbsp;&nbsp;&nbsp;&nbsp;a. [Windows 10](#windows-10)
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp;b. [Windows older versions](#windows-older-versions)
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp;c. [MacOS](#macos)
+ 
+ 
+2. [Explaining the concept](#explaining-the-concept)
+
+3. [Docker Terminology](#docker-terminology)
+
+4. [Docker Terminology](#docker-terminology)
+
+5. [Popular docker commands](#popular-docker-commands)
+
+6. [Code Lab 1](#code-lab-1)
+
+7. [Code Lab 2](#code-lab-2)
 
 
 ## Setting up the environment
@@ -13,37 +44,37 @@ An IBM Cloud account - A lite account, which is a free of charge account that do
 Docker must be installed on your system to be able to follow along with the hands-on sessions of the meetup. Please follow these steps for your operating system.
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;* **Windows 10**:
+### Windows 10:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Download the installer](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Follow the wizard's instructions
+- [Download the installer](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)
+- Follow the wizard's instructions
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Wizard](https://docs.docker.com/docker-for-windows/images/installer-finishes.png)
+![Wizard](https://docs.docker.com/docker-for-windows/images/installer-finishes.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Start Docker
+- Start Docker
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Start Docker](https://docs.docker.com/docker-for-windows/images/docker-app-search.png)
+![Start Docker](https://docs.docker.com/docker-for-windows/images/docker-app-search.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If installation was successful and Docker is running you will see the docker icon in the taskbar.
+If installation was successful and Docker is running you will see the docker icon in the taskbar.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Taskbar](https://docs.docker.com/docker-for-windows/images/whale-taskbar-circle.png)
+![Taskbar](https://docs.docker.com/docker-for-windows/images/whale-taskbar-circle.png)
 
 ---
 
-&nbsp;&nbsp;&nbsp;&nbsp;* **Windows < 10**:
+### Windows older versions:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Installer Docker Toolbox](https://download.docker.com/win/stable/DockerToolbox.exe)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Follow the wizard's instructions
+- [Installer Docker Toolbox](https://download.docker.com/win/stable/DockerToolbox.exe)
+- Follow the wizard's instructions
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Wizard2](https://docs.docker.com/toolbox/images/installer_open.png)
+![Wizard2](https://docs.docker.com/toolbox/images/installer_open.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Find your Docker Toolbox installation in your Start Menu or on your Desktop
+- Find your Docker Toolbox installation in your Start Menu or on your Desktop
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Toolbox](https://docs.docker.com/toolbox/images/icon-set.png)
+![Toolbox](https://docs.docker.com/toolbox/images/icon-set.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Click the Docker Quickstart icon
+- Click the Docker Quickstart icon
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If installation was successful you will see a terminal window opened. It has a specific bash environment set up for Docker.
+If installation was successful you will see a terminal window opened. It has a specific bash environment set up for Docker.
 
 To check if Docker is running write the following command `docker -v`
 
@@ -55,20 +86,20 @@ Docker version 17.09.1-ce, build 19e2cf6
 
 ---
 
-&nbsp;&nbsp;&nbsp;&nbsp;* **MacOs**:
+### MacOs:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- [Download the Installer](https://download.docker.com/mac/stable/Docker.dmg)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Follow the wizard's instructions and drag the Docker app in to your applications folder
+- [Download the Installer](https://download.docker.com/mac/stable/Docker.dmg)
+- Follow the wizard's instructions and drag the Docker app in to your applications folder
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Wizard3](https://docs.docker.com/docker-for-mac/images/docker-app-drag.png)
+![Wizard3](https://docs.docker.com/docker-for-mac/images/docker-app-drag.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Find the Docker app in your Applications folder
+- Find the Docker app in your Applications folder
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Applications](https://docs.docker.com/docker-for-mac/images/docker-app-in-apps.png)
+![Applications](https://docs.docker.com/docker-for-mac/images/docker-app-in-apps.png)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Click the Docker icon
+- Click the Docker icon
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If installation was successful you will see a Docker icon in the toolbar.
+If installation was successful you will see a Docker icon in the toolbar.
 
 ![Toolbar](https://docs.docker.com/docker-for-mac/images/whale-in-menu-bar.png)
 
@@ -111,7 +142,7 @@ The strength of Docker is that they have gone through the tedious task of stripp
 
 -------------------
 
-## How to create an environment for Docker to run
+## Docker Terminology
 
 We need to know some terminology before we explain how a container runs:
 
@@ -133,6 +164,23 @@ ENV APP_ENV dev
 
 -------------------
 
+## Popular docker commands
+
+- `docker ps`: Lists all the running containers on your local machine.
+- `docker rm [container-name/s]`: Remove one or more containers from your local machine.
+- `docker run [container-name[:version-number]]`: Run a new container from an image.
+- `docker run -p [container-port-number:host-port-number] [container-name]:[container-tag/version-number]`: Runs a docker container with specifying/publishing the container’s port(s) to the host.
+- `docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]`: Another way of running a docker container while specifying different options.
+- `docker stop [container-name]`: Stop one or more running containers. Thsi step must be done before removing a container using `docker rm`.
+- `docker images`: Lists all images on your local machine.
+- `docker rmi [image-name/s]`: Remove one or more on your local machine.
+- `docker build -t [image-name:tag] .`: Build an image from a _Dockerfile_, we add a tag for each image after the colon to identify different commits on the same image. **_Please Note_** the trailing dot at the end of the command as it has to be there. It basically tells docker where to find the _Dockerfile_ with the desired image specs.
+- `docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]`: Commit changes made in a container to an image to use later with the same additions to the environment made in that container instance.
+- `docker exec -it [container name] /bin/bash`: Attach a shell to the containers. This gives us the ability to look at what's happening inside the container just like we use the terminal on our local machines. This also gives us the ability to add and install packages to our container that weren't specified in the image. We can save the additions we made in our container by use `docker commit` as shown above.
+
+For more Docker commands check the [Docker Documentation](https://docs.docker.com/engine/reference/commandline/docker/)
+
+-------------------
 
 ## Code Lab 1
 
@@ -178,26 +226,11 @@ $ docker run hello-world
   https://docs.docker.com/userguide/
 ~~~
 
-**Breakdown for some of the most popular docker commands**
+----------------------
 
-- `docker ps`: Lists all the running containers on your local machine.
-- `docker rm [container-name/s]`: Remove one or more containers from your local machine.
-- `docker run [container-name[:version-number]]`: Run a new container from an image.
-- `docker run -p [container-port-number:host-port-number] [container-name]:[container-tag/version-number]`: Runs a docker container with specifying/publishing the container’s port(s) to the host.
-- `docker container exec [OPTIONS] CONTAINER COMMAND [ARG...]`: Another way of running a docker container while specifying different options.
-- `docker stop [container-name]`: Stop one or more running containers. Thsi step must be done before removing a container using `docker rm`.
-- `docker images`: Lists all images on your local machine.
-- `docker rmi [image-name/s]`: Remove one or more on your local machine.
-- `docker build -t [image-name:tag] .`: Build an image from a _Dockerfile_, we add a tag for each image after the colon to identify different commits on the same image. **_Please Note_** the trailing dot at the end of the command as it has to be there. It basically tells docker where to find the _Dockerfile_ with the desired image specs.
-- `docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]`: Commit changes made in a container to an image to use later with the same additions to the environment made in that container instance.
-- `docker exec -it [container name] /bin/bash`: Attach a shell to the containers. This gives us the ability to look at what's happening inside the container just like we use the terminal on our local machines. This also gives us the ability to add and install packages to our container that weren't specified in the image. We can save the additions we made in our container by use `docker commit` as shown above.
+## Code Lab 2
 
-For more Docker commands check the [Docker Documentation](https://docs.docker.com/engine/reference/commandline/docker/)
-
--------------------
-
-
-## Code Lab 2: Running Private Ethereum Blockchain inside a Docker Container and push it to IBM Cloud.
+**Running Private Ethereum Blockchain inside a Docker Container and push it to IBM Cloud.**
 
 - Go to `CodeLab-2` folder in this repo.
 - Copy the source code for the three files in your local editor.
@@ -242,12 +275,17 @@ Now we're sure that we have a docker container running with the specified enviro
 
 ![Step 5](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step5.gif?raw=true)
 
-- Now, to push our _ethereum_ image to IBM Cloud we need to take it first. Type following command `docker tag <source_image>:<tag> registry.<region>.bluemix.net/<my_namespace>/<new_image_repo>:<new_tag>`. This may look a handful, but it's really easy if we break it down. 
->>Replace <source_image> with the image name on your local machine.
->>Replace <tag> with the image's tag. (_Remember: if you forgot the image's name, you can always use `docker images` command to list all the images on your local machine and their relative tags._
->>Replace <region> with the region you used before while logging in, in our case, it was US South. If you want to grab the exact name type `bx api` in the command line and it will show you the region you're currently connected to, choose the only the letter between `api.` and `.bluemix.net`.
- >>Then replace <my_namespace> with the namespace you just created in the previous step.
- >>Finally, replace <new_image_repo> with the name of the local image you are pushing to the cloud, the tag part is optional, if you already gave you're image a tag while naming it locally `ethereum:latest` for example, use that tag. Here's a demo of that comand in action:
+- Now, to push our _ethereum_ image to IBM Cloud we need to take it first. Type following command `docker tag <source_image>:<tag> registry.<region>.bluemix.net/<my_namespace>/<new_image_repo>:<new_tag>`. This may look a handful, but it's really easy if we break it down.
+
+&nbsp;&nbsp;&nbsp;&nbsp;* Replace <source_image> with the image name on your local machine.
+
+&nbsp;&nbsp;&nbsp;&nbsp;* Replace <tag> with the image's tag. (_Remember: if you forgot the image's name, you can always use `docker images` command to list all the images on your local machine and their relative tags._
+
+&nbsp;&nbsp;&nbsp;&nbsp;* Replace <region> with the region you used before while logging in, in our case, it was US South. If you want to grab the exact name type `bx api` in the command line and it will show you the region you're currently connected to, choose the only the letter between `api.` and `.bluemix.net`.
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp;* Then replace <my_namespace> with the namespace you just created in the previous step.
+ 
+ &nbsp;&nbsp;&nbsp;&nbsp;* Finally, replace <new_image_repo> with the name of the local image you are pushing to the cloud, the tag part is optional, if you already gave you're image a tag while naming it locally `ethereum:latest` for example, use that tag. Here's a demo of that comand in action:
  
  ![Step 6](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step6.gif?raw=true)
  
