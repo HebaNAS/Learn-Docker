@@ -298,7 +298,7 @@ Now we're sure that we have a docker container running with the specified enviro
  ![Step 7 Done](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step7Done.png?raw=true)
  
  **Note**
- If you hit the following error
+ If you hit the following error `unauthorized: authentication required`
  
  ![Step 7 Error](https://github.com/HebaNAS/Learn-Docker/blob/master/InstructionVideos/Step7Error.gif?raw=true)
  
